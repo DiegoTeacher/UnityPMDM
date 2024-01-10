@@ -10,11 +10,14 @@ public class PlatformMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
     private Vector2 _dir;
+    private Animator _animator;
+
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,16 @@ public class PlatformMovement : MonoBehaviour
         {
             _dir = new Vector2(1, 0);
             _spriteRenderer.flipX = true;
+        }
+
+        // animations
+        if(_dir != Vector2.zero)
+        {
+            _animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            _animator.SetBool("isWalking", false);
         }
     }
 
