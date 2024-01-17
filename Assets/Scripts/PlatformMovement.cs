@@ -49,7 +49,7 @@ public class PlatformMovement : MonoBehaviour
 
     public void PlayStepSound()
     {
-        AudioManager.instance.PlayAudio(stepSounds[Random.Range(0, stepSounds.Length)], 0.3f);
+        AudioManager.instance.PlayAudio3D(stepSounds[Random.Range(0, stepSounds.Length)], transform.position, 1f);
     }
 
     private void FixedUpdate()

@@ -37,6 +37,15 @@ public class AudioManager : MonoBehaviour
         return source;
     }
 
+    // volume: [0, 1]
+    public AudioSource PlayAudio3D(AudioClip clip, Vector3 position, float volume = 1)
+    {
+        AudioSource source = PlayAudio(clip, volume);
+        source.spatialBlend = 1;
+        source.gameObject.transform.position = position;
+        return source;
+    }
+
     public AudioSource PlayAudioOnLoop(AudioClip clip, float volume = 1)
     {
         if (currentAudioOnLoop)
