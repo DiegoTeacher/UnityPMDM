@@ -28,7 +28,6 @@ public class PlatformMovement : MonoBehaviour
         {
             _dir = new Vector2(-1, 0);
             _spriteRenderer.flipX = false;
-
         }
         else if (Input.GetKey(rightKey))
         {
