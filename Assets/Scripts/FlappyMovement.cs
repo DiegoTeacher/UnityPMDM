@@ -6,6 +6,7 @@ public class FlappyMovement : MonoBehaviour
 {
     public float force;
     public KeyCode jumpKey;
+    public GameObjectPool bulletPool;
 
     private Rigidbody _rb;
     // Start is called before the first frame update
@@ -24,6 +25,18 @@ public class FlappyMovement : MonoBehaviour
             _rb.velocity = Vector3.zero;
             _rb.AddForce(Vector3.up * force, ForceMode.Impulse);
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject bullet = bulletPool.GetInactiveGameObject();
+            if(bullet) 
+            {
+                bullet.SetActive(true);
+                bullet.transform.position = transform.position;
+                bullet.GetComponent<Bullet>().dir = transform.forward;
+            }
+        }
+
 #elif UNITY_ANDROID
         // movil
         foreach(Touch toque in Input.touches)
